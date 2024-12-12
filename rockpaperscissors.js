@@ -20,17 +20,25 @@ function playRound() {
     let humanChoice = getHumanChoice()
     let computerChoice = getComputerChoice()
     if (choiceArray.indexOf(humanChoice) != -1) {
-        alert("Invalid Choice, Please Try Again")
+        console.log("Invalid Choice, Please Try Again")
+        return 0
     } else {
         let humanChoiceIndex = choiceArray.indexOf(humanChoice)
         let computerChoiceIndex = choiceArray.indexOf(computerChoice)
 
         if (humanChoiceIndex == computerChoiceIndex) {
-            return `It's a tie!, both you and computer picked ${humanChoice}` 
+            console.log(`It's a tie!, both you and computer picked ${humanChoice}` )
+            return 0 
         } else if ((humanChoiceIndex + 1) % choiceArray.length == computerChoiceIndex) {
-           return `You lost! you picked ${humanChoice}, while computer picked ${computerChoice}` 
+            console.log(`You lost! you picked ${humanChoice}, while computer picked ${computerChoice}`)
+            return 1
         } else if ((computerChoiceIndex + 1) % choiceArray.length == humanChoiceIndex) {
-            return `You won! you picked ${humanChoice}, while computer picked ${computerChoice}`
+            console.log(`You won! you picked ${humanChoice}, while computer picked ${computerChoice}`)
+            return 2
         }
     }
 }
+
+let userScore = 0
+let computerScore = 0
+
