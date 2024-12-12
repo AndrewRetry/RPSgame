@@ -71,4 +71,12 @@ while (true) {
     }
 }
 
+if (userScore > computerScore) {
+    console.log("You Win!")
+} else if (userScore < computerScore) {
+    console.log("You Lost!")
+} else {
+    console.log("It's a Tie!")
+}
+
 console.log("Bye!")
