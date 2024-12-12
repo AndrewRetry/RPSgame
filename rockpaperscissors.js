@@ -10,16 +10,15 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let inputText = prompt("Pick one! [Rock/Paper/Scissors] : ")
-    const humanChoice = inputText.toLowerCase()
-    return humanChoice
+    let inputText = prompt("Pick one! [Rock/Paper/Scissors] : ").toLowerCase()
+    return inputText
 }
 
 function playRound() {
     const choiceArray = ["rock", "paper", "scissors"]
     let humanChoice = getHumanChoice()
     let computerChoice = getComputerChoice()
-    if (choiceArray.indexOf(humanChoice) != -1) {
+    if (choiceArray.indexOf(humanChoice) === -1) {
         console.log("Invalid Choice, Please Try Again")
         return 0
     } else {
@@ -60,7 +59,7 @@ let userScore = 0
 let computerScore = 0
 let userPrompt = prompt("Do you want to play Rock-Paper-Scissors? (5 Game Set) [Y/N] : ").toLowerCase()
 
-while (True) {
+while (true) {
     if (!(userPrompt == "y" || userPrompt == "n")) {
         userPrompt = prompt("Do you want to play Rock-Paper-Scissors? (5 Game Set) [Y/N] : ").toLowerCase()
     } else if (userPrompt == "y") {
