@@ -28,17 +28,48 @@ function playRound() {
 
         if (humanChoiceIndex == computerChoiceIndex) {
             console.log(`It's a tie!, both you and computer picked ${humanChoice}` )
-            return 0 
+            return 1 
         } else if ((humanChoiceIndex + 1) % choiceArray.length == computerChoiceIndex) {
             console.log(`You lost! you picked ${humanChoice}, while computer picked ${computerChoice}`)
-            return 1
+            return 2
         } else if ((computerChoiceIndex + 1) % choiceArray.length == humanChoiceIndex) {
             console.log(`You won! you picked ${humanChoice}, while computer picked ${computerChoice}`)
-            return 2
+            return 3
+        }
+    }
+}
+
+function playGame() {
+    for (let index = 0; index < 5;) {
+        let gameOutcome = playRound()
+        if (gameOutcome) {
+            if (gameOutcome == 1) {
+            userScore += 1
+            computerScore += 1
+            } else if (gameOutcome == 2) {
+            computerScore += 1
+            } else if (gameOutcome == 3) {
+            userScore += 1
+            } 
+            index += 1
         }
     }
 }
 
 let userScore = 0
 let computerScore = 0
+let userPrompt = prompt("Do you want to play Rock-Paper-Scissors? (5 Game Set) [Y/N] : ").toLowerCase()
 
+while (True) {
+    if (!(userPrompt == "y" || userPrompt == "n")) {
+        userPrompt = prompt("Do you want to play Rock-Paper-Scissors? (5 Game Set) [Y/N] : ").toLowerCase()
+    } else if (userPrompt == "y") {
+        playGame()
+        console.log(`Current Standings - User: ${userScore} - Computer: ${computerScore}`)
+        userPrompt = prompt("Do you want to play again? (5 Game Set) [Y/N] : ").toLowerCase()
+    } else if (userPrompt == "n") {
+        break
+    }
+}
+
+console.log("Bye!")
